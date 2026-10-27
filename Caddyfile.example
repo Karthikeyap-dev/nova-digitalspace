@@ -1,0 +1,8 @@
+# Example Caddy site. Replace nova.example.com with a domain whose DNS points
+# to this server and whose ports 80/443 are reachable from the internet.
+# Caddy obtains and renews HTTPS certificates automatically.
+
+nova.example.com {
+    encode zstd gzip
+    reverse_proxy 127.0.0.1:8000
+}

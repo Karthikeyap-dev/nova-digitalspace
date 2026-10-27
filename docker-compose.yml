@@ -1,0 +1,19 @@
+services:
+  nova:
+    build: .
+    container_name: nova-space
+    restart: unless-stopped
+    ports:
+      # Keep the app private; terminate HTTPS at a reverse proxy on the host.
+      - "127.0.0.1:8000:8000"
+    environment:
+      NOVA_DATA_DIR: /app/data
+      NOVA_MAX_UPLOAD_MB: ${NOVA_MAX_UPLOAD_MB:-100}
+      NOVA_STORAGE_LIMIT_GB: ${NOVA_STORAGE_LIMIT_GB:-10}
+      NOVA_SESSION_DAYS: ${NOVA_SESSION_DAYS:-7}
+      NOVA_ALLOW_REGISTRATION: ${NOVA_ALLOW_REGISTRATION:-true}
+      NOVA_COOKIE_SECURE: ${NOVA_COOKIE_SECURE:-false}
+      NOVA_ALLOWED_HOSTS: ${NOVA_ALLOWED_HOSTS:-localhost,127.0.0.1}
+      NOVA_PUBLIC_DEPLOYMENT: ${NOVA_PUBLIC_DEPLOYMENT:-false}
+    volumes:
+      - ./data:/app/data

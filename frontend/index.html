@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nova — Personal Digital Space</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Ambient background mesh -->
+<div class="bg-mesh" aria-hidden="true">
+  <span class="blob blob--violet"></span>
+  <span class="blob blob--teal"></span>
+  <span class="blob blob--pink"></span>
+  <div class="bg-grid"></div>
+</div>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="nav__inner">
+    <a href="#top" class="nav__logo">
+      <span class="nav__logo-mark">◈</span> nova<span class="accent-dot">.</span>space
+    </a>
+    <nav class="nav__links">
+      <a href="#hub">Hub</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#blog">Blog</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="account-actions">
+      <span id="account-name" class="account-name" hidden></span>
+      <button id="logout-button" class="btn btn--ghost" type="button" hidden>Sign out</button>
+      <button id="signin-button" class="btn btn--ghost" type="button">Sign in</button>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <p class="eyebrow">self-hosted &amp; sovereign</p>
+    <h1 class="hero__title">
+      One space for everything<br> that's <span class="text-gradient">actually mine.</span>
+    </h1>
+    <p class="hero__subtitle">
+      Your personal workspace for files, encrypted vault entries, projects, and messages —
+      brought together in one place.
+    </p>
+
+    <div class="hero__actions">
+      <a href="#cloud" data-open="cloud" class="btn btn--primary">Open File Storage</a>
+      <a href="#hub" class="btn btn--outline">Explore the hub</a>
+    </div>
+
+    <!-- Signature element: system status readout -->
+    <div class="status-panel" role="status">
+      <div class="status-panel__row status-panel__row--head">
+        <span class="status-dot" aria-hidden="true"></span>
+        <span id="system-state">system.connecting</span>
+        <span class="status-panel__time" id="clock">--:--:--</span>
+      </div>
+      <div class="status-panel__grid">
+        <div class="status-metric">
+          <span class="status-metric__label">host</span>
+          <span class="status-metric__value">home-server-01</span>
+        </div>
+        <div class="status-metric">
+          <span class="status-metric__label">storage</span>
+          <span class="status-metric__value" id="storage-value">Checking…</span>
+          <div class="bar"><div class="bar__fill" id="storage-bar" style="width:0%"></div></div>
+        </div>
+        <div class="status-metric">
+          <span class="status-metric__label">uptime</span>
+          <span class="status-metric__value" id="uptime-value">—</span>
+        </div>
+        <div class="status-metric">
+          <span class="status-metric__label">last sync</span>
+          <span class="status-metric__value" id="sync-value">Live API</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HUB -->
+  <section id="hub" class="hub">
+    <div class="section-head">
+      <p class="eyebrow">the hub</p>
+      <h2>Four rooms, one house.</h2>
+    </div>
+
+    <div class="hub__grid">
+
+      <article class="card card--glow">
+        <div class="card__icon card__icon--violet">☁</div>
+        <h3>Cloud Storage</h3>
+        <p>Files, photos, and documents stored in this application’s local file library.</p>
+        <a href="#cloud" data-open="cloud" class="card__link">Open File Storage <span>→</span></a>
+      </article>
+
+      <article class="card card--glow">
+        <div class="card__icon card__icon--teal">🔐</div>
+        <h3>Password Vault</h3>
+        <p>Store credentials as client-side encrypted records. Your master passphrase is never sent to the server.</p>
+        <a href="#vault" data-open="vault" class="card__link">Open Password Vault <span>→</span></a>
+      </article>
+
+      <article class="card card--glow">
+        <div class="card__icon card__icon--pink">✦</div>
+        <h3>Portfolio</h3>
+        <p>Selected work, experiments, and things I've shipped —
+          scroll down or jump straight in.</p>
+        <a href="#portfolio" class="card__link">View work <span>→</span></a>
+      </article>
+
+      <article class="card card--glow">
+        <div class="card__icon card__icon--violet">✎</div>
+        <h3>Blog</h3>
+        <p>Notes on building this space, self-hosting, and whatever else
+          is worth writing down.</p>
+        <a href="#blog" class="card__link">Read posts <span>→</span></a>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio" class="portfolio">
+    <div class="section-head">
+      <p class="eyebrow">selected work</p>
+      <h2>Things I've built.</h2>
+    </div>
+
+    <div class="portfolio__grid">
+      <article class="project-card">
+        <div class="project-card__cover project-card__cover--1"></div>
+        <div class="project-card__body">
+          <div class="project-card__tags">
+            <span class="tag">Self-hosting</span><span class="tag">Docker</span>
+          </div>
+          <h3>Home Server Stack</h3>
+          <p>A Docker-Compose setup running Nextcloud, Vaultwarden, and a
+            reverse proxy on a single home server.</p>
+          <a href="#" class="text-link">View project →</a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-card__cover project-card__cover--2"></div>
+        <div class="project-card__body">
+          <div class="project-card__tags">
+            <span class="tag">Frontend</span><span class="tag">CSS</span>
+          </div>
+          <h3>This Digital Space</h3>
+          <p>The dashboard you're looking at right now — hand-built with
+            plain HTML and CSS, no framework.</p>
+          <a href="#" class="text-link">View project →</a>
+        </div>
+      </article>
+
+      <article class="project-card">
+        <div class="project-card__cover project-card__cover--3"></div>
+        <div class="project-card__body">
+          <div class="project-card__tags">
+            <span class="tag">API</span><span class="tag">Automation</span>
+          </div>
+          <h3>Backup Automation</h3>
+          <p>Scripts that snapshot and encrypt the Nextcloud data volume
+            to offsite storage every night.</p>
+          <a href="#" class="text-link">View project →</a>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- BLOG -->
+  <section id="blog" class="blog">
+    <div class="section-head">
+      <p class="eyebrow">latest words</p>
+      <h2>From the blog.</h2>
+    </div>
+
+    <div class="blog__list">
+      <article class="post-row">
+        <span class="post-row__date">Jul 21</span>
+        <div class="post-row__body">
+          <h3>Why I moved off Google Drive for good</h3>
+          <p>The migration to Nextcloud took a weekend. Here's what broke,
+            what didn't, and what I'd do differently.</p>
+        </div>
+        <a href="#" class="text-link">Read →</a>
+      </article>
+
+      <article class="post-row">
+        <span class="post-row__date">Jul 10</span>
+        <div class="post-row__body">
+          <h3>Building a password vault I actually trust</h3>
+          <p>Notes on self-hosting a credential manager instead of renting one.</p>
+        </div>
+        <a href="#" class="text-link">Read →</a>
+      </article>
+
+      <article class="post-row">
+        <span class="post-row__date">Jun 29</span>
+        <div class="post-row__body">
+          <h3>Designing a homepage for a homelab</h3>
+          <p>How this exact page went from a wireframe to a gradient-lit dashboard.</p>
+        </div>
+        <a href="#" class="text-link">Read →</a>
+      </article>
+    </div>
+  </section>
+
+  <!-- CONTACT / CTA -->
+  <section id="contact" class="cta">
+    <h2>Say hello.</h2>
+    <p>Open to interesting projects, collaborations, or just talking about self-hosting.</p>
+    <a href="#contact" data-open="contact" class="btn btn--primary btn--lg">Send a message →</a>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>© <span id="year">2026</span> nova.space — your personal digital workspace.</p>
+  <div class="footer__links">
+    <a href="#top">Back to top</a>
+    <a href="#cloud" data-open="cloud">File Storage</a>
+    <a href="#vault" data-open="vault">Password Vault</a>
+  </div>
+</footer>
+
+<!-- Authentication dialog: intentionally has no backdrop-close or close button. -->
+<dialog class="workspace-dialog auth-dialog" id="auth-dialog" aria-labelledby="auth-title">
+  <div class="dialog-head"><div><p class="eyebrow">private workspace</p><h2 id="auth-title">Welcome to Nova</h2></div></div>
+  <p class="dialog-copy">Sign in to access your private files and encrypted vault. New accounts get their own isolated storage and vault records.</p>
+  <div class="auth-tabs" role="tablist" aria-label="Authentication options">
+    <button class="auth-tab is-active" id="show-login" type="button" role="tab" aria-selected="true">Sign in</button>
+    <button class="auth-tab" id="show-register" type="button" role="tab" aria-selected="false">Create account</button>
+  </div>
+  <form id="login-form" class="stack-form auth-form">
+    <label for="login-email">Email</label><input id="login-email" type="email" autocomplete="username" placeholder="you@example.com" required maxlength="254">
+    <label for="login-password">Password</label><input id="login-password" type="password" autocomplete="current-password" placeholder="Your password" required maxlength="128">
+    <button class="btn btn--primary" type="submit">Sign in securely</button>
+  </form>
+  <form id="register-form" class="stack-form auth-form" hidden>
+    <label for="register-name">Display name</label><input id="register-name" autocomplete="name" placeholder="Your name" required maxlength="80">
+    <label for="register-email">Email</label><input id="register-email" type="email" autocomplete="email" placeholder="you@example.com" required maxlength="254">
+    <label for="register-password">Password (at least 12 characters)</label><input id="register-password" type="password" autocomplete="new-password" minlength="12" placeholder="Use a long, unique password" required maxlength="128">
+    <button class="btn btn--primary" type="submit">Create account</button>
+  </form>
+  <p id="auth-status" class="form-status" role="status" aria-live="polite"></p>
+  <p class="auth-footnote">Use a unique password. Passwords are hashed with Argon2id on the server. Never reuse your password-vault master passphrase.</p>
+</dialog>
+
+<!-- Workspace dialogs -->
+<dialog class="workspace-dialog" id="cloud-dialog" aria-labelledby="cloud-title">
+  <div class="dialog-head"><div><p class="eyebrow">local file library</p><h2 id="cloud-title">File Storage</h2></div><button class="icon-button" data-close aria-label="Close">✕</button></div>
+  <p class="dialog-copy">Your files are private to your signed-in account and stored on the machine running Nova.</p>
+  <form id="upload-form" class="inline-form"><input id="file-input" type="file" required><button class="btn btn--primary" type="submit">Upload file</button></form>
+  <p id="upload-status" class="form-status" role="status"></p>
+  <div class="table-wrap"><table class="data-table"><thead><tr><th>File</th><th>Size</th><th>Uploaded</th><th>Actions</th></tr></thead><tbody id="file-list"><tr><td colspan="4">Loading files…</td></tr></tbody></table></div>
+</dialog>
+
+<dialog class="workspace-dialog" id="vault-dialog" aria-labelledby="vault-title">
+  <div class="dialog-head"><div><p class="eyebrow">encrypted records</p><h2 id="vault-title">Password Vault</h2></div><button class="icon-button" data-close aria-label="Close">✕</button></div>
+  <p class="dialog-copy">Vault fields are encrypted in your browser with AES-GCM before they are saved. The server stores ciphertext only. Use a strong passphrase and keep a safe backup; forgetting it means the entries cannot be decrypted.</p>
+  <form id="unlock-form" class="inline-form"><label class="sr-only" for="master-passphrase">Master passphrase</label><input id="master-passphrase" type="password" minlength="8" placeholder="Master passphrase (8+ characters)" autocomplete="current-password" required><button class="btn btn--primary" type="submit">Unlock vault</button></form>
+  <p id="vault-status" class="form-status" role="status">Enter a master passphrase to unlock or initialize the vault.</p>
+  <form id="vault-form" class="stack-form" hidden><input id="vault-site" placeholder="Website / service" required maxlength="200"><input id="vault-username" placeholder="Username / email" required maxlength="200"><input id="vault-password" type="password" placeholder="Password / secret" required maxlength="2000"><textarea id="vault-notes" placeholder="Notes (optional)" rows="2" maxlength="2000"></textarea><div class="form-actions"><button class="btn btn--primary" type="submit">Save encrypted entry</button><button class="btn btn--outline" id="lock-vault" type="button">Lock vault</button></div></form>
+  <div id="vault-list" class="vault-list"><p class="empty-state">Vault is locked.</p></div>
+</dialog>
+
+<dialog class="workspace-dialog" id="contact-dialog" aria-labelledby="contact-title">
+  <div class="dialog-head"><div><p class="eyebrow">contact</p><h2 id="contact-title">Send a message</h2></div><button class="icon-button" data-close aria-label="Close">✕</button></div>
+  <p class="dialog-copy">Messages are saved in this app’s database. To deliver email notifications, configure SMTP in the backend environment.</p>
+  <form id="contact-form" class="stack-form"><input id="contact-name" placeholder="Your name" required maxlength="120"><input id="contact-email" type="email" placeholder="Your email" required maxlength="254"><input id="contact-subject" placeholder="Subject" required maxlength="200"><textarea id="contact-message" placeholder="Your message" rows="5" required maxlength="10000"></textarea><button class="btn btn--primary" type="submit">Send message</button></form>
+  <p id="contact-status" class="form-status" role="status"></p>
+</dialog>
+
+<script src="app.js" defer></script>
+
+</body>
+</html>

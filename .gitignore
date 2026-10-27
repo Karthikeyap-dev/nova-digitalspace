@@ -1,0 +1,53 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# macOS metadata
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Logs
+*.log
+logs/
+
+# Local databases
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+
+# Runtime data and uploads
+uploads/
+storage/
+instance/
+
+# Node.js
+node_modules/
+dist/
+npm-debug.log*
+
+# Backups
+*.bak
+*.tmp
